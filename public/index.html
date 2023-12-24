@@ -2,8 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        const sendData = () => {
+            fetch('http://localhost:3000/api', 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({name: 'John Doe'})
+            })
+        };
+    </script>
 </head>
 <body>
     <h1>Index</h1>
+    <button onclick="sendData()">Send Data</button>
 </body>
 </html>
