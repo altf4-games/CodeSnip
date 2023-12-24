@@ -1,12 +1,17 @@
 const express = require('express')
 const app = express()
-const cors = require('cors');
-require('dotenv').config();
+import { sql } from "@vercel/postgres";
 
 app.use(express.json({ limit: '3mb' }));
-app.use(cors());
+require('dotenv').config();
 
-app.post('/api', (req, res) => {
+const get_test_data = async () => {
+  await sql`CREATE TABLE DB (id INT PRIMARY KEY,body TEXT);`;
+  const { rows } = await sql`SELECT body FROM DB WHERE id = 0;`;
+  return rows;
+};
+
+app.post('/api', async (req, res) => {
   console.log(req.body);
   res.status(200).send('Received the data.');
 })
