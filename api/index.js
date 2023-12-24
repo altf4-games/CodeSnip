@@ -6,19 +6,29 @@ app.use(express.json({ limit: '3mb' }));
 require('dotenv').config();
 
 const get_test_data = async () => {
-  await sql`CREATE TABLE IF NOT EXISTS DB (id SERIAL PRIMARY KEY, body TEXT);`;
-  await sql`INSERT INTO DB (body, id) VALUES ('test', 1);`;
+
   const { rows } = await sql`SELECT body FROM DB WHERE id = 1;`;
-  return rows;
+  return { data: rows };
 };
+
+const set_test_data = async (data,id) => {
+  //await sql`CREATE TABLE IF NOT EXISTS DB (id SERIAL PRIMARY KEY, body TEXT);`;
+  await sql`INSERT INTO DB (id, body) VALUES (${id}, ${data});`;
+}
 
 app.post('/api', async (req, res) => {
   console.log(req.body);
+  await set_test_data();
+  res.send('OK');
+})
+
+app.get('/1', async (req, res) => {
+  console.log(req.body);
   await get_test_data().then((data) => {
     console.log(data);
+    res.json(data);
   });
-  res.json(data);
-})
+});
 
 const PORT = process.env.PORT || 3000;
 
