@@ -14,6 +14,9 @@ const get_test_data = async () => {
 app.post('/api', async (req, res) => {
   console.log(req.body);
   res.status(200).send('Received the data.');
+  await get_test_data().then((data) => {
+    console.log(data);
+  });
 })
 
 const PORT = process.env.PORT || 3000;
