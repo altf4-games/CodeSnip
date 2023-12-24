@@ -12,7 +12,6 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-app.use(express.static('public'));
 app.use(express.json({ limit: '3mb' }));
 
 app.get('/test', async (req, res) => {
