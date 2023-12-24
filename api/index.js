@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors');
 
 const { Pool } = require('pg');
 require('dotenv').config();
@@ -13,6 +14,7 @@ const pool = new Pool({
 });
 
 app.use(express.json({ limit: '3mb' }));
+app.use(cors());
 
 app.get('/test', async (req, res) => {
   try {
