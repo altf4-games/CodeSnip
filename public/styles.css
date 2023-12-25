@@ -39,6 +39,10 @@ body {
     color: #61dafb;
 }
 
+.white-mode {
+    background-color: #ededed;
+}
+
 #settings {
     padding: 20px;
 }

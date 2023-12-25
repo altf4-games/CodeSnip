@@ -88,3 +88,14 @@ const search = () => {
     const url = '/raw/' + searchInput.value;
     window.open(url);
 }
+
+let darkMode = true;
+const darkModeToggle = () => {
+    darkMode = !darkMode;
+    document.getElementsByTagName("body")[0].classList.toggle("white-mode");
+    if (darkMode) {
+        editor.setOption("theme", "dracula");
+    } else {
+        editor.setOption("theme", "xq-light");
+    }
+};

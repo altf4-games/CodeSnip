@@ -3,7 +3,7 @@ const app = express()
 const { sql } = require("@vercel/postgres");
 const cors = require('cors');
 
-app.use(express.json());
+app.use(express.json({limit: '1mb'}));
 app.use(cors());
 app.use(express.static('public'));
 require('dotenv').config();
