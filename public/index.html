@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        const sendData = () => {
-            fetch('/api', 
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify
-                (
-                    { 
-                        "id":1,
-                        "body":"hello-world"
-                    }
-                )
-            }).then((res) => res.json().then((data) => console.log(data)));
-        };
+        const sendData = async () => {
+            try {
+                const response = await fetch('/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "id": 100,
+                        "body": "hello-world"
+                    }),
+                });
 
-        const id = 1;
-        const getData = () => {
-            fetch(`/raw/${id}`).then((res) => res.json()).then((data) => console.log(data));
-        }
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        /*const id = 1;
+
+        const getData = async () => {
+            try {
+                const response = await fetch(`/raw/${id}`, { method: 'GET' });
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };*/
     </script>
 </head>
 <body>
     <h1>Index</h1>
     <button onclick="sendData()">Send Data</button>
-    <button onclick="getData()">Get Data</button>
 </body>
 </html>
