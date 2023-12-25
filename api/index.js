@@ -14,15 +14,24 @@ app.post('/send', async (req, res) => {
 })
 
 app.get(`/raw/:id`, async (req, res) => {
-  const id = req.params.id;
-  const data = await get_test_data(id);
-  res.send(data.rows[0].body);
+  try {
+    const id = req.params.id;
+    const data = await get_test_data(id);
+    if (!data || !data.rows || data.rows.length === 0) {
+      res.status(404).send("Data not found");
+      return;
+    }
+    res.send(data.rows[0].body);
+  } catch (error) {
+    console.error("Error retrieving data:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server started on http://localhost:${PORT}`)
+  console.log(`Server started on port:${PORT}`)
 })
 
 const get_test_data = async (id) => {
