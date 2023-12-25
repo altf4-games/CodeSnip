@@ -8,19 +8,17 @@ app.use(cors());
 app.use(express.static('public'));
 require('dotenv').config();
 
-
-app.post('/send', async (req, res) => {
-  console.log(req.body);
+app.post('/api/send', async (req, res) => {
+  //console.log(req.body);
   await set_test_data(req.body.id, req.body.body);
   res.json({ status: 'ok' });
 })
 
-app.get(`/raw/:id`, async (req, res) => {
+app.get(`/api/raw/:id`, async (req, res) => {
   const id = req.params.id;
   const data = await get_test_data(id);
-  console.log(data);
+  //console.log(data);
   res.send(data.rows[0].body);
-  //res.json(data);
 });
 
 const PORT = process.env.PORT || 3000;
