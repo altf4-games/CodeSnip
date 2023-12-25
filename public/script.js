@@ -1,6 +1,7 @@
 const editor = CodeMirror.fromTextArea(document.getElementById("textarea"), {
     lineNumbers: true,
-    theme:"dracula"
+    theme: "dracula",
+    mode: "text/x-csrc",
 });
 
 const setEditorSize = () => {
