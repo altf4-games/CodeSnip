@@ -21,6 +21,7 @@ app.get(`/raw/:id`, async (req, res) => {
       res.status(404).send("Data not found");
       return;
     }
+    res.type('text/plain');
     res.send(data.rows[0].body);
   } catch (error) {
     console.error("Error retrieving data:", error);

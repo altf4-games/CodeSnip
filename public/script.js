@@ -44,10 +44,9 @@ const sendData = async () => {
 const getData = async (id) => {
     try {
         const response = await fetch(`/raw/${id}`, { method: 'GET' });
-        const data = await response.text()
-        return data;
+        return response;
     } catch (error) {
-        return undefined;
+        return null;
     }
 };
 
@@ -73,7 +72,7 @@ const checkIfIDExists = async () => {
         return true;
     }
     const response = await getData(id);
-    if (response === undefined) {
+    if (!response || response.status === 404) {
         return false;
     } else {
         alert("A paste already exists with this ID");
