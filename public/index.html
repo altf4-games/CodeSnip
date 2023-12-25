@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>CodeSnip</title>
     <meta charset="UTF-8">
-    <script>
-        const sendData = async () => {
-            try {
-                const response = await fetch('/send', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        "id": 100,
-                        "body": "hello-world"
-                    }),
-                });
-
-                const data = await response.json();
-                console.log(data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };
-        /*const id = 1;
-
-        const getData = async () => {
-            try {
-                const response = await fetch(`/raw/${id}`, { method: 'GET' });
-                const data = await response.json();
-                console.log(data);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };*/
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/dracula.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
 </head>
 <body>
-    <h1>Index</h1>
-    <button onclick="sendData()">Send Data</button>
+    <div class="navbar">
+        <a href="#" class="logo">CodeSnip</a>
+        <input type="text" class="search-bar" placeholder="Search...">
+        <div class="dark-mode-toggle">🌙</div>
+    </div>
+    <div id="textbox">
+        <textarea id="textarea"></textarea>
+    </div>
+    <div id="settings">
+        <input type="text" class="id" placeholder="ID">
+        <button>Create New Paste</button>
+    </div>
+
 </body>
+<script src="script.js"></script>
 </html>
