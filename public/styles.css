@@ -45,6 +45,7 @@ body {
 
 #settings {
     padding: 20px;
+    white-space: nowrap;
 }
 
 .id {

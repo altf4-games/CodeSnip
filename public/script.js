@@ -17,6 +17,7 @@ setEditorSize();
 window.addEventListener("resize", setEditorSize);
 const idInput = document.getElementsByClassName("id")[0];
 const searchInput = document.getElementsByClassName("search-bar")[0];
+idInput.value = Math.floor(Math.random() * 65536);
 
 const sendData = async () => {
     if (checkIfIDInRange() == false)
@@ -35,8 +36,9 @@ const sendData = async () => {
             }),
         });
         
-        const data = await response.json();
-        console.log(data);
+        await response.json().then(() => {
+            window.open(`/raw/${idInput.value}`);
+        });
     } catch (error) {
         console.error('Error:', error);
     }
