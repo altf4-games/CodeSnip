@@ -19,6 +19,7 @@ body {
 
 .logo {
     font-size: 1.5em;
+    margin-right: 0.5em;
     font-weight: bold;
     text-decoration: none;
     color: rgb(101, 100, 152);
@@ -34,7 +35,7 @@ body {
 }
 
 .dark-mode-toggle {
-    margin-left: 10px;
+    margin-right: 10px;
     cursor: pointer;
     color: #61dafb;
 }
