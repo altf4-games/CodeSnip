@@ -11,7 +11,7 @@ const setEditorSize = () => {
     const remainingHeight = windowHeight - navbarHeight - marginFromBottom;
     
     editor.setSize("100%", remainingHeight);
-}
+};
 
 setEditorSize();
 window.addEventListener("resize", setEditorSize);
@@ -67,7 +67,7 @@ const checkIfIDInRange = () => {
     }
 
     return true;
-}
+};
 
 const checkIfIDExists = async () => {
     const id = idInput.value;
@@ -84,12 +84,12 @@ const checkIfIDExists = async () => {
 };
 
 const search = () => {
-    if (searchInput.value == null) {
+    if (searchInput.value.length == 0) {
         return;
     }
     const url = '/raw/' + searchInput.value;
     window.open(url);
-}
+};
 
 let darkMode = true;
 const darkModeToggle = () => {
