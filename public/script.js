@@ -13,10 +13,18 @@ const setEditorSize = () => {
     editor.setSize("100%", remainingHeight);
 };
 
-setEditorSize();
-window.addEventListener("resize", setEditorSize);
 const idInput = document.getElementsByClassName("id")[0];
 const searchInput = document.getElementsByClassName("search-bar")[0];
+
+searchInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("search-btn").click();
+  }
+});
+
+setEditorSize();
+window.addEventListener("resize", setEditorSize);
 idInput.value = Math.floor(Math.random() * 65536);
 
 const sendData = async () => {
