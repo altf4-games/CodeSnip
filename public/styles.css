@@ -23,7 +23,7 @@ body {
 
 .logo {
     font-size: 1.5em;
-    margin-right: 0.5em;
+    margin-right: 5px;
     font-weight: bold;
     text-decoration: none;
     color: rgb(152, 144, 130);
@@ -94,4 +94,10 @@ body {
     max-width: 400px;
     width: 100%;
     text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        font-size: 1.25em;
+    }
 }
