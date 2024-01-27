@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description" content="CodeSnip is a platform for sharing and discovering code snippets.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/dracula.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.13.4/theme/xq-light.css">
@@ -13,11 +14,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
     <script src="https://codemirror.net/mode/clike/clike.js"></script>
 </head>
-<body>
+<main>
     <div class="navbar">
         <a href="/" class="logo">CodeSnip</a>
         <input type="text" class="search-bar" placeholder="Search...">
-        <button style="background: transparent; border: none;" onclick="search()"><img src="search.png" id="search-btn" style="width: 32px; height: 32px;"></button>
+        <button style="background: transparent; border: none;" onclick="search()"><img src="search.png" id="search-btn" style="width: 32px; height: 32px;" alt="Search button"></button>
         <div class="dark-mode-toggle" onclick="darkModeToggle()">🌙</div>
     </div>
     <div id="textbox">
@@ -28,6 +29,6 @@
         <button id="submit-btn" onclick="sendData()">Create New Paste</button>
     </div>
 
-</body>
+</main>
 <script src="script.js"></script>
 </html>
